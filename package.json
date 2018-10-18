@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-chatbot",
+  "version": "1.0.0",
+  "description": "First chatbot using Nodejs and Dialogflow",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clitustran1207/NodeJS-Chatbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clitustran1207/NodeJS-Chatbot/issues"
+  },
+  "homepage": "https://github.com/clitustran1207/NodeJS-Chatbot#readme",
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
