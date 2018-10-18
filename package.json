@@ -4,7 +4,7 @@
   "description": "First chatbot using Nodejs and Dialogflow",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "apiai": "^4.0.3",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "uuid": "^3.3.2"
   },
