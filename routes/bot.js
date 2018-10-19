@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const func = require('../app');
+
 require('dotenv').config();
 
 router.get('/', (req, res) => {
@@ -34,5 +36,36 @@ router.get('/webhook', (req, res) => {
         }
     }
 });
+
+// Creates the endpoint for our webhook 
+router.post('/webhook', (req, res) => {
+    let body = req.body;
+
+    // Checks this is an event from a page subscription
+    if (body.object === 'page') {
+
+        // Iterates over each entry - there may be multiple if batched
+        body.entry.forEach(entry => {
+
+            // Gets the message. entry.messaging is an array, but 
+            // will only ever contain one message, so we get index 0
+            entry.messaging.forEach(messagingEvent => {
+                if (messagingEvent.message) {
+                    func.receivedMessage(messagingEvent);
+                } else {
+                    console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+                }
+            });
+            // let webhook_event = entry.messaging[0];
+            // console.log(webhook_event);
+        });
+
+        // Returns a '200 OK' response to all requests
+        res.status(200).send('EVENT_RECEIVED');
+    } else {
+        // Returns a '404 Not Found' if event is not from a page subscription
+        res.sendStatus(404);
+    }
+})
 
 module.exports = router;
